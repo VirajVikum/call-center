@@ -42,6 +42,10 @@
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Extension</label>
                         <input type="text" name="extension" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Extension" required="">
                     </div>
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                        <input type="text" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Extension" required="">
+                    </div>
                     
                     <div class="col-span-2 sm:col-span-1">
                         <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Extension Type</label>
@@ -117,9 +121,7 @@
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th scope="col" class="px-6 py-3">
-                    ID
-                </th>
+                
                 <th scope="col" class="px-6 py-3">
                     Extension
                 </th>
@@ -128,6 +130,9 @@
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Context
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Password
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Status
@@ -165,13 +170,14 @@
                 <td class="px-6 py-4">
                     
                 </td>
+                <td class="px-6 py-4">
+                    
+                </td>
             </tr>
             @foreach($extensions as $extension)
             <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                 
-                <td class="px-6 py-4">
-                    {{$extension->id}}
-                </td>
+                
                 <td class="px-6 py-4">
                     {{$extension->extension}}
                 </td>
@@ -180,6 +186,9 @@
                 </td>
                 <td class="px-6 py-4">
                 {{$extension->context}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$extension->password}}
                 </td>
                 <td class="px-6 py-4">
                 {{($extension->status) ? "Assigned" : "Unassigned"}}

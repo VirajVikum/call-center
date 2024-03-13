@@ -11,16 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ac_extensions', function (Blueprint $table) {
+        Schema::create('ad_campaigns', function (Blueprint $table) {
             $table->id();
-            $table->string('extension');
-            $table->string('extension_type');
-            $table->string('context');
-            $table->string('password');
-            $table->string('user_id')->default("0");
-            $table->integer('status')->default(0);
+            $table->unsignedBigInteger('campaign_id');
+            $table->string('contact_1');
+            $table->string('contact_2');
+            $table->integer('status');
+            $table->string('language');
+            $table->string('data');
             $table->timestamps();
         });
+        
     }
 
     /**
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ac_extensions');
+        Schema::dropIfExists('ad_campaigns');
     }
 };

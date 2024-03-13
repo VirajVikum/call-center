@@ -1,18 +1,19 @@
 @extends('layouts.dashboard')
 
 
+
 @section('content')
 
 <nav class="bg-white border-black-700 dark:bg-gray-500 p-0">
     <div class="flex flex-wrap justify-between items-center  max-w-screen-xl p-3">
          
     
-    <h3 class="p-1 ">User Management</h3>
+    <h3 class="p-1 ">Skill Management</h3>
 
     <div class="absolute right-0">
         <!-- <a href="{{route('assign.extensions')}}"> -->
-        <button class="border border-gray rounded-md p-1" data-modal-target="assign-ext" data-modal-toggle="assign-ext">Assign Extensions</button>
-        <button class="border border-gray rounded-md p-1 ml-2 mr-3"data-modal-target="crud-modal" data-modal-toggle="crud-modal">Add Users</button>
+        <button class="border border-gray rounded-md p-1" data-modal-target="assign-ext" data-modal-toggle="assign-ext">Assign Skills</button>
+        <button class="border border-gray rounded-md p-1 ml-2 mr-3"data-modal-target="crud-modal" data-modal-toggle="crud-modal">Add Skill</button>
     </div>
 
 
@@ -24,7 +25,7 @@
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Create New User
+                    Create New Skil
                 </h3>
                 <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -34,57 +35,14 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" action="{{route('acUser.store')}}" method="post">
+            <form class="p-4 md:p-5" action="{{route('acSkil.store')}}" method="post">
                 @csrf 
                 @method('post')
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2 sm:col-span-1">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full Name</label>
-                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Your Full name" required="">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Skill Name</label>
+                        <input type="text" name="skill" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Your Full name" required="">
                     </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User Type</label>
-                        <select id="category" name="user_type_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            
-                            <option value="1">Super admin</option>
-                            <option value="2">Admin</option>
-                            <option value="3">Supervisor</option>
-                            <option value="4">Agent</option>
-                            <option value="5">Outlet Supervisor</option>
-                            <option value="6">Outlet User</option>
-                            <option value="7">Client Adimn</option>
-                            <option value="8">Client Report User</option>
-                        </select>
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                        <input type="email" name="email" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Your Full name" required="">
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User Name</label>
-                        <input type="text" name="user_name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Your Full name" required="">
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone</label>
-                        <input type="text" name="phone" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Your Full name" required="">
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIC</label>
-                        <input type="text" name="nic" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Your Full name" required="">
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
-                        <select id="category" name="gender" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            
-                            <option selected="male">male</option>
-                            <option value="female">female</option>
-                        </select>
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
-                        <input type="text" name="address" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Your Full name" required="">
-                    </div>
-                    
                     
                     
                 </div>
@@ -141,38 +99,19 @@
                     ID
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Name
+                    Skill
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Email
+                    Created date
                 </th>
-                <th scope="col" class="px-6 py-3">
-                    User Name
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Title
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Phone
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    NIc
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Gender
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Extension
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Address
-                </th>
-                <th scope="col" class="px-6 py-3">
+                
+                
+                <!-- <th scope="col" class="px-6 py-3">
                     Edit
-                </th>
-                <th scope="col" class="px-6 py-3">
+                </th> -->
+                <!-- <th scope="col" class="px-6 py-3">
                     Delete
-                </th>
+                </th> -->
             </tr>
         </thead>
         <tbody>
@@ -184,97 +123,46 @@
                 <td class="px-6 py-4">
                     
                 </td>
+                <!-- <td class="px-6 py-4">
+                
+                </td> -->
+                
                 <td class="px-6 py-4">
                 
                 </td>
-                <td class="px-6 py-4">
                 
-                </td>
-                <td class="px-6 py-4">
-                    
-                </td>
-                <td class="px-6 py-4">
-                    
-                </td>
-                <td class="px-6 py-4">
-                
-                </td>
-                <td class="px-6 py-4">
-                    
-                </td>
-                <td class="px-6 py-4">
-                
-                </td>
-                <td class="px-6 py-4">
-                
-                </td>
-                <td class="px-6 py-4">
-                
-                </td>
-                <td class="px-6 py-4">
-                
-                </td>
                 
             </tr>
-            @foreach($users as $user)
+            @foreach($skills as $skill)
             <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
         
                     <td class="px-6 py-4">
-                        {{$user->id}}
+                        {{$skill->id}}
                     </td>
                     <td class="px-6 py-4">
-                    {{$user->name}}
+                    {{$skill->skill}}
                     </td>
                     <td class="px-6 py-4">
-                        {{$user->email}}
+                    {{$skill->created_at}}
                     </td>
-                    <td class="px-6 py-4">
-                        {{$user->user_name}}
-                    </td>
-                    <td class="px-6 py-4">
-                    {{$user->userType->title}}
-                    </td>
-                    <td class="px-6 py-4">
-                       {{$user->phone}}
-                    </td>
-                    <td class="px-6 py-4">
-                    {{$user->nic}}
-                    </td>
-                    <td class="px-6 py-4">
-                    {{$user->gender}}
-                    </td>
-                    <td class="px-6 py-4">
-                        <div class="flex">
-                        @if($user->extension == 1)
-                            Unassigned
-                        @else
-                            {{ $user->extension }}
-                            <!-- Add your delete button here -->
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a onclick="return confirm('Are you sure you want to remove the extension?')" href="{{route('unasign.extension',['user'=>$user])}}"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m3 3 1.664 1.664M21 21l-1.5-1.5m-5.485-1.242L12 17.25 4.5 21V8.742m.164-4.078a2.15 2.15 0 0 1 1.743-1.342 48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185V19.5M4.664 4.664 19.5 19.5" />
-</svg>
-</a>
-                        @endif
-                        </div>
-                    </td>
-                    <td class="px-6 py-4">
-                    {{$user->address}}
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="{{route('users.edit',['user'=>$user])}}">
+                    
+                    
+                    
+                    
+                    <!-- <td class="px-6 py-4">
+                        <a href="#">
                     <button data-modal-target="update-modal" data-modal-toggle="update-modal"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
 </svg>
 </button></a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="{{route('users.delete',['user'=>$user])}}">
+                    </td> -->
+                    <!-- <td class="px-6 py-4">
+                        <a href="{{route('acSkill.delete',['skill'=>$skill])}}">
                     <button  onclick="return confirm('Are you sure you want to delete this user?')"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
 </svg>
 </button></a>
-                    </td>
+                    </td> -->
                     
             </tr>
             @endforeach
@@ -296,7 +184,7 @@
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Assign New User
+                    Assign New Skill
                 </h3>
                 <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="assign-ext">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -306,34 +194,38 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" action="{{route('assign.exten')}}" method="post">
+            <form class="p-4 md:p-5" action="{{route('assign.skill')}}" method="post">
                 @csrf 
                 @method('post')
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     
                     <div class="col-span-2 sm:col-span-1">
                         <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User</label>
-                        <select id="category" name="user_type_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <select id="category" name="user_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <option selected="">select name</option>
-                        @foreach($users->where('status', '!=','1') as $user)
-                            <option value="{{$user->id }}">{{$user->name}}</option>
+                        @foreach ($users as $user)
+
+                        <option value="{{$user->id}}">{{$user->name}}</option>
+
                         @endforeach
                         </select>
                         
                     </div>
                     
                     <div class="col-span-2 sm:col-span-1">
-                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Extension</label>
-                        <select id="category" name="extension" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Skills</label>
+                        <select id="category" name="skill[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 js-example-tags" multiple="multiple" style="width: 100%;">
                         
-                            <option selected="slt">select extension</option>
-                        @foreach($ext->where('status','!=','1') as $ext)
-                            <option value="{{$ext->id}}">{{$ext->extension}}</option>
-                        @endforeach
+                            <!-- <option selected="slt">select skills</option> -->
+                            @foreach ($skills as $skill)
+
+                            <option value="{{$skill}}">{{$skill->skill}}</option>
+
+                            @endforeach
+                        
                         </select>
                     </div>
-                    
-                    
+
                     
                 </div>
                 

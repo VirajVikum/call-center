@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ac_extensions', function (Blueprint $table) {
+        Schema::create('ad_agent_skills', function (Blueprint $table) {
             $table->id();
-            $table->string('extension');
-            $table->string('extension_type');
-            $table->string('context');
-            $table->string('password');
-            $table->string('user_id')->default("0");
-            $table->integer('status')->default(0);
+            //$table->foreign('agent_id')->references('id')->on('ac_users');
+            $table->unsignedBigInteger('agent_id');
+            $table->string('skills');
+            $table->string('skill_ids');
             $table->timestamps();
+            
+            
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ac_extensions');
+        Schema::dropIfExists('ad_agent_skills');
     }
 };

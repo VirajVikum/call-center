@@ -12,6 +12,7 @@ class ac_extension extends Model
         'extension',
         'extension_type',
         'context',
+        'password',
         'status',
     ];
 

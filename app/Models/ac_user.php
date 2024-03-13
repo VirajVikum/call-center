@@ -18,7 +18,7 @@ class ac_user extends Model
         'nic',
         'gender',	
         'address',		
-        'password',			
+        'password',			 
         'extension',
         'user_type_id',
         'status'

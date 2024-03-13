@@ -36,8 +36,8 @@
 
 
     <div><a href="{{route('companies')}}">
-    <h2 class="mt-2.5 ml-3 mb-2 text-black-900 dark:text-black-900" style="font-size: 16px;">Company Management</h2></a>
-    <p class="ml-3 font-normal text-gray-500 dark:text-gray-400"style="font-size: 13px;">All company Management Operations </p>
+    <h2 class="mt-2.5 ml-3 mb-2 text-black-900 dark:text-black-900" style="font-size: 16px;">Campaign Management</h2></a>
+    <p class="ml-3 font-normal text-gray-500 dark:text-gray-400"style="font-size: 13px;">All campaign Management Operations </p>
     
     </div>
     </div>

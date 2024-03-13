@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ac_company;
 use App\Models\ac_extension;
+use App\Models\ac_skill;
 use App\Models\ac_user;
 use App\Models\ac_user_types;
 use Illuminate\Contracts\View\View;
@@ -133,7 +134,9 @@ class HomeController extends Controller
  
     public function skills()
     {
-        return view('skills.skill_home');
+        $users =ac_user::all();
+        $skills = ac_skill::all();
+        return view('skills.skill_home',['skills'=>$skills,'users'=>$users]);
     }
     
 }

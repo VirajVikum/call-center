@@ -68,7 +68,7 @@ class acUsersController extends Controller
     public function assign_extension()
     {
         $users = ac_user::with('userType')->get();
-        $extensions=ac_extension::all();
+        $extensions=ac_extension::all(); 
         return view('users.asign_extensions',compact('users','extensions'));
     }
 

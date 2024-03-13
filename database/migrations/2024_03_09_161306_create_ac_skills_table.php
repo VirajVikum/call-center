@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ac_extensions', function (Blueprint $table) {
+        Schema::create('ac_skills', function (Blueprint $table) {
             $table->id();
-            $table->string('extension');
-            $table->string('extension_type');
-            $table->string('context');
-            $table->string('password');
-            $table->string('user_id')->default("0");
-            $table->integer('status')->default(0);
+            $table->string('skill');
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ac_extensions');
+        Schema::dropIfExists('ac_skills');
     }
 };

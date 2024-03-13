@@ -16,7 +16,8 @@ class acExtensionController extends Controller
             [
                 'extension'=>'required',
                 'extension_type'=>'required',
-                'context'=>'required'
+                'context'=>'required',
+                'password'=>'required',
                 
             ]
             );
@@ -38,6 +39,7 @@ class acExtensionController extends Controller
                 'extension'=>'required',
                 'extension_type'=>'required',
                 'context'=>'required',
+                'password'=>'required',
                 
             ]
             );
