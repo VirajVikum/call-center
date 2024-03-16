@@ -13,15 +13,14 @@ return new class extends Migration
     {
         Schema::create('ad_campaigns', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('campaign_id');
+            $table->string('campaign_id');
             $table->string('contact_1');
             $table->string('contact_2');
-            $table->integer('status');
+            $table->string('status')->default(0); // Adjust data type as needed
             $table->string('language');
-            $table->string('data');
+            $table->longText('data'); // Adjust data type based on future needs
             $table->timestamps();
         });
-        
     }
 
     /**

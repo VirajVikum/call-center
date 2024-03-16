@@ -4,6 +4,7 @@ use App\Http\Controllers\acCompanyController;
 use App\Http\Controllers\acExtensionController;
 use App\Http\Controllers\acSkillController;
 use App\Http\Controllers\acUsersController;
+use App\Http\Controllers\adCampaignController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -73,5 +74,8 @@ Route::get('/skills',[HomeController::class,'skills'])->name('skills');
 Route::post('/skills/store',[acSkillController::class,'acSkil_store'])->name('acSkil.store');
 Route::get('/skills/{skill}/delete',[acSkillController::class,'acSkil_delete'])->name('acSkill.delete');
 Route::post('/skills/asign',[acSkillController::class,'assign_skill'])->name('assign.skill');
+
+Route::get('/campaign/{company}/store',[adCampaignController::class,'campaign_assign'])->name('campaign.assign');
+Route::post('/campaign/store',[adCampaignController::class,'data_store'])->name('data.store');
 
 

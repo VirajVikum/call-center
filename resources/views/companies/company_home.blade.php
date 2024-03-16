@@ -2,6 +2,7 @@
 
 
 
+
 @section('content')
 
 <nav class="bg-white border-black-700 dark:bg-gray-500 p-0">
@@ -135,7 +136,9 @@
                     
                 </td>
             </tr>
-            @foreach($companies as $company)
+
+        @foreach($companies as $company)
+
             <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 {{$company->id}}
@@ -164,33 +167,40 @@
                 </td>
                 <td class="px-6 py-4">
                     
-                    <button class="border border-gray rounded-md p-1" type="file" name="compaign" data-modal-target="campaign-assign" data-modal-toggle="campaign-assign">Assign Campaign</button>
-                    
-                </td>
-            </tr>
+                    <!-- <button class="border border-gray rounded-md p-1 assign-campaign-btn" id="assign-campaign-btn" type="file" name="compaign" data-modal-target="campaign-assign" data-company-name="{{$company->name}}" data-modal-toggle="campaign-assign"> -->
+
+                    <!-- <button class="border border-gray rounded-md p-1 assign-campaign-btn" type="button" data-modal-target="campaign-assign" data-company-name="{{$company->name}}" data-modal-toggle="campaign-assign">Assign Campaign</button> -->
+
+                    <a href="{{route('campaign.assign',['company'=>$company]) }}">
+                    <button class="border border-gray rounded-md p-1 ">Assign Campaign</button>
+                    </a>
+   
+</button>
 
 
-
-            <div id="campaign-assign" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div id="campaign-assign" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Create New Campaign
+                    Create New Campaign 
                 </h3>
                 <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="campaign-assign">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                     </svg>
-                    <span class="sr-only">Close modal</span>
+                    <span class="sr-only">Close modal </span>
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" action="{{route('company.store')}}" method="post">
+            <form class="p-4 md:p-5" action="{{route('data.store')}}" method="post" enctype="multipart/form-data">
                 @csrf 
                 @method('post')
+
+                <!-- to get company id/name -->
+
                 <div class="grid gap-4 m-4 mt-0  grid-cols-2">
                     <div class="col-span-2 sm:col-span-1">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Campaign Name</label>
@@ -214,9 +224,14 @@
 </div> 
 
 
+                    
+                </td>
+            </tr>
 
 
-            @endforeach
+@endforeach
+
+
             
         </tbody>
     </table>
@@ -224,8 +239,20 @@
 </div>
 
 
+           
 
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var buttons = document.querySelectorAll('.assign-campaign-btn');
+        buttons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var companyName = this.getAttribute('data-company-name');
+                document.getElementById('name').value = companyName;
+            });
+        });
+    });
+</script>
 
 
 

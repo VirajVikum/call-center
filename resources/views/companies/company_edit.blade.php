@@ -18,7 +18,7 @@
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-3">
          
     
-    <h3 class="p-1 ml-6">Company Management</h3>
+    <h3 class="p-1 ml-6">Campaign Management</h3>
 
     <div>
         <button class="border border-gray rounded-md p-1">Assign Extensions</button>
@@ -26,7 +26,12 @@
 
 
 
-<div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden fixed top-0 left-0 flex justify-center items-center w-full h-full bg-black bg-opacity-50">
+<div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden fixed top-0 left-0 flex justify-center items-center w-full h-full bg-black bg-opacity-75">
+<style>
+  #crud-modal {
+    backdrop-filter: blur(5px); /* Adjust blur amount as needed */
+  }
+</style>
     <div class="relative p-4 w-full max-w-md max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">

@@ -27,7 +27,12 @@
 
 
 
-        <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden fixed top-0 left-0 flex justify-center items-center w-full h-full bg-black bg-opacity-50">
+        <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden fixed top-0 left-0 flex justify-center items-center w-full h-full bg-black bg-opacity-75">
+        <style>
+  #crud-modal {
+    backdrop-filter: blur(5px); /* Adjust blur amount as needed */
+  }
+</style>
     <div class="relative p-4 w-full max-w-md max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
