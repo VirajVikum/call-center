@@ -102,51 +102,53 @@ class adCampaignController extends Controller
     ]);
     // dd($request->selected_company_id);
 
-    // Get the uploaded file
+    
     $file = $request->file('file');
     
-    // Process the Excel file
+    
     $data = Excel::toArray([], $file);
 
-    // Validate that data is an array
+    
     if (!is_array($data) || empty($data)) {
-        // Handle the case where Excel data is not valid
+        
         return redirect()->back()->with('error', 'Invalid Excel data.');
     }
 
-    // Extract column titles (keys)
+    // column titles
     $keys = $data[0][0];
 
-    // Find indexes of important columns
+    
     $contIndex = array_search("contact_no", $keys);
     $lanIndex = array_search("language", $keys);
 
-    // Initialize data set array
+    
     $data_set = [];
 
-    // Process each row of Excel data
+    
+    $skipFirstIteration = true; // to skip first iteration
     foreach ($data[0] as $row_values) {
-        // Skip the row if it doesn't contain contact_no
+        if ($skipFirstIteration) {
+            $skipFirstIteration = false; 
+            continue; 
+        }
+        
         if (!isset($row_values[$contIndex])) {
             continue;
         }
 
-        // Build data set
+        
         $data_set = [];
-        $skipFirstIteration = true;
+        
         foreach ($keys as $index => $key) {
-            if ($skipFirstIteration) {
-                $skipFirstIteration = false; // Set the flag to false after the first iteration
-                continue; // Skip the first iteration
-            }
+            
             
             $data_set[$key] = $row_values[$index];
         }
 
-        // Encode data set to JSON
+        
         $json_data_set = json_encode($data_set);
 
-        // Create new record in the database
+        
         $newRecord = ad_campaign::create([
             'campaign_id' => $request->selected_company_id,
             'contact_1' => $row_values[$contIndex],
@@ -157,7 +159,7 @@ class adCampaignController extends Controller
         ]);
     }
 
-    // Redirect to the appropriate page
+    
     return redirect(route('companies'));
 }
 

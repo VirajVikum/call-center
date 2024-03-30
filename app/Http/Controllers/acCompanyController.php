@@ -14,6 +14,7 @@ class acCompanyController extends Controller
 	$data=$request->validate(
             [
                 'name'=>'required',
+                'type'=>'required',
                 
             ]
             );
@@ -40,6 +41,7 @@ class acCompanyController extends Controller
         $data=$request->validate(
         [
             'name'=>'required',
+            'type'=>'required',
             
         ]
         );

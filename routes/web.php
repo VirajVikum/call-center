@@ -6,6 +6,7 @@ use App\Http\Controllers\acSkillController;
 use App\Http\Controllers\acUsersController;
 use App\Http\Controllers\adCampaignController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*

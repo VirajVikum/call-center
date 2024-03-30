@@ -31,6 +31,20 @@ $(document).ready(function() {
 });
 </script>
 
+<style>
+    .custom-li {
+        height: 40px;
+        padding: 0px; /* Adjust padding as needed */
+        border-bottom: 2px solid transparent; /* Initial border color set to transparent */
+        transition: border-color 0.3s; /* Smooth transition effect */
+    }
+
+    .custom-li:hover {
+        border-bottom-color: blue; /* Blue border color on hover */
+    }
+</style>
+
+
 <body>
     
 
@@ -39,29 +53,29 @@ $(document).ready(function() {
     <div class="max-w-screen-xl px-4 py-3 ">
         <div class="flex items-center">
             <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
-                <li>
+                <li class="custom-li">
                     <img src="" class="h-8" alt="AUSO Logo" />
                 </li>
-                <li>
-                    <a href="{{route('dashboard')}}?var=Dashboard" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Dashboard</a>
+                <li class="custom-li">
+                    <a href="{{route('dashboard')}}?var=Dashboard" class="text-gray-900 dark:text-white" aria-current="page">Dashboard</a>
                 </li>
-                <li>
-                    <a href="{{route('leads')}}?var=Leads" class="text-gray-900 dark:text-white hover:underline">Leads</a>
+                <li class="custom-li">
+                    <a href="{{route('leads')}}?var=Leads" class="text-gray-900 dark:text-white">Leads</a>
                 </li>
-                <li>
-                    <a href="{{route('tickets')}}?var=Tickets" class="text-gray-900 dark:text-white hover:underline">Tickets</a>
+                <li class="custom-li">
+                    <a href="{{route('tickets')}}?var=Tickets" class="text-gray-900 dark:text-white">Tickets</a>
                 </li>
-                <li>
-                    <a href="{{route('orders')}}?var=Orders" class="text-gray-900 dark:text-white hover:underline">Orders</a>
+                <li class="custom-li">
+                    <a href="{{route('orders')}}?var=Orders" class="text-gray-900 dark:text-white">Orders</a>
                 </li>
-                <li>
-                    <a href="{{route('contact')}}?var=Contact Feed" class="text-gray-900 dark:text-white hover:underline">Contact Feed</a>
+                <li class="custom-li">
+                    <a href="{{route('contact')}}?var=Contact Feed" class="text-gray-900 dark:text-white">Contact Feed</a>
                 </li>
-                <li>
-                    <a href="{{route('reports')}}?var=Reports" class="text-gray-900 dark:text-white hover:underline">Reports</a>
+                <li class="custom-li">
+                    <a href="{{route('reports')}}?var=Reports" class="text-gray-900 dark:text-white">Reports</a>
                 </li>
-                <li>
-                    <a href="{{route('settings')}}?var=Settings" class="text-gray-900 dark:text-white hover:underline">Settings</a>
+                <li class="custom-li">
+                    <a href="{{route('settings')}}?var=Settings" class="text-gray-900 dark:text-white">Settings</a>
                 </li>
                 <div class="absolute right-0">
                 

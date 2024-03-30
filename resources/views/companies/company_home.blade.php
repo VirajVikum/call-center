@@ -42,7 +42,16 @@
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                         <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Company name">
                     </div>
-                    
+
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Campaign Type</label>
+                        <select id="category" name="type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            
+                            <option selected="daily">Daily</option>
+                            <option value="continuous">Continuous</option>
+                        </select>
+                    </div>
+                     
                     
                     
                     
@@ -105,6 +114,9 @@
                 <th scope="col" class="px-6 py-3">
                     Name
                 </th>
+                <th scope="col" class="px-6 py-3">
+                    Type
+                </th>
                 
                 <th scope="col" class="px-6 py-3">
                     Edit
@@ -128,6 +140,9 @@
                 <td class="px-6 py-4">
                     
                 </td>
+                <td class="px-6 py-4">
+                    
+                </td>
                 
                 <td class="px-6 py-4">
                     
@@ -145,6 +160,9 @@
                 </th>
                 <td class="px-6 py-4">
                 {{$company->name}}
+                </td>
+                <td class="px-6 py-4">
+                {{$company->type}}
                 </td>
                 
                 <td class="px-6 py-4">

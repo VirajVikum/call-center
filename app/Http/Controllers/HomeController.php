@@ -30,15 +30,53 @@ class HomeController extends Controller
     
 
     public function index()
-    {
-        return view('layouts/dashboard');
+    {   
+        $agents = ac_user::all();
+        $variable = "Dashboard";
+        $status=1;
+
+        view()->share([
+            'agents'  => $agents,
+            'variable' => $variable,
+            'status'   => $status,
+        ]);
+
+        return view('admin.dashboard', compact('agents', 'variable','status'));
     }
 
     public function dashboard(Request $request)
     {
-        $variable = $request->query('var');
-        view()->share('variable', $variable);
-        return view('admin/dashboard')->with('variable', $variable);
+        // $variable = $request->query('var');
+        // view()->share('variable', $variable);
+        // return view('admin/dashboard')->with('variable', $variable);
+
+        $agents = ac_user::all();
+        $variable = "Dashboard";
+        $status=0;
+        view()->share([
+            'agents'  => $agents,
+            'variable' => $variable,
+            'status'   => $status,
+        ]);
+
+        // for($i=0;$i<10;$i++) {
+        //     if($status==1)
+        //     {
+        //         $status=0;
+        //     }
+        //     else{
+        //         $status=1;
+        //     }
+        //     // Flush the output buffer to ensure immediate printing
+        //     flush();
+        //     // Sleep for 1 second before printing the next "Hello, world!"
+        //     sleep(2);
+        // }
+
+        
+        return view('admin.dashboard', compact('agents', 'variable','status'));
+        // return view('admin.dashboard', compact('agents', 'variable'));
+        // return view('admin/dashboard', ['agents' => $agents])->with('variable', $variable);
     }
 
     public function leads(Request $request)

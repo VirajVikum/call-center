@@ -11,5 +11,6 @@ class ac_company extends Model
     protected $fillable = [
         'id',
         'name',
+        'type'
         ];
 }
