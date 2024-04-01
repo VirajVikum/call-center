@@ -148,7 +148,7 @@ class HomeController extends Controller
         $user = ac_user::findOrFail($userId);
         $exten = ac_extension::findOrFail($extensionId);
         
-        $user->update(['status'=>'1']);
+        //$user->update(['status'=>'1']);
         $exten->update(['status'=>'1']);
         $user->update(['extension'=>$exten->extension]);
 
@@ -163,7 +163,7 @@ class HomeController extends Controller
         // $extension = ac_extension::find($ext);
         $extension = ac_extension::where('extension', $user->extension)->first();
         // dd($extension);
-        $user->update(['status'=>0 , 'extension'=>1]);
+        $user->update(['extension'=>1]);
         $extension->update(['status'=>0]);
 
         return redirect(route('users'));

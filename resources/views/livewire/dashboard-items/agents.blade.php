@@ -20,7 +20,18 @@
                                 </g>
                                 <!-- fill: rgb(240,88,47)     fill: rgb(110,177,225)      fill: rgb(110,177,225)  -->
                             </svg>  &nbsp;&nbsp; 
-                    {{$agent->name}}
+                            <div style="display: flex; flex-direction: column;">
+                                <div class="text-left text-base font-bold">{{$agent->name}}</div>
+                                <div>
+                                    @foreach ($skills as $skill)
+                                        @if ($agent->id == $skill->agentid && $skill->status == 1)
+                                        <span class="bg-green-200 rounded px-1">{{ $skill->skill }}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+
+                    
                 </button>
             </div>
             

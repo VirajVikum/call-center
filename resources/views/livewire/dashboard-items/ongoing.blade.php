@@ -1,5 +1,12 @@
-<div class="block max-w-sm p-6 bg-white p-4 m-3 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 w-25 h-36 flex justify-between px-5 pt-5">
+<div wire:poll.1000ms class="block max-w-sm p-6 bg-white p-4 m-3 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 w-25 h-36 flex justify-between px-5 pt-5">
+<div style="display: flex; flex-direction: column;">
+<div>
 <p class="font-normal text-gray-700 dark:text-gray-400">Ongoing</p>
+</div>
+<div class="pt-1">
+    <span class="text-base font-semibold pl-5">{{$count}}</span>
+</div>
+</div>
 <div class="w-12 h-12  bg-yellow-200 border border-yellow-200 rounded-lg flex justify-center items-center">
             <div class="w-10 h-10 text-yellow-700">
                 <svg style="position: relative; top: 4px; left: 2px;" class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -9,4 +16,4 @@
                 </svg>
 
             </div>
-</div></div>
+</div></div> 
