@@ -40,7 +40,7 @@
 
 
 <!-- seperate 2 rows -->
-<div style="float: left; width:70%; padding-left:5%; padding-right:0%;">
+<div style="float: left; width:100%; padding-left:5%; padding-right:3%;">
 
 <div style="display: flex;">
 
@@ -62,7 +62,7 @@
 
 <livewire:dashboard-items.no-answer />
 
-<div class="block max-w-sm p-6 bg-white p-4 m-3 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 w-25 h-36 flex justify-between px-5 pt-5">
+<div class="block max-w-sm p-6 bg-white p-4 m-3 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 w-full md:w-1/2 lg:w-1/3 h-36 flex justify-between px-5 pt-5">
 <p class="font-normal text-gray-700 dark:text-gray-400">Not Set</p>
         <div class="w-12 h-12 p-3 border border-green-300 rounded-lg flex justify-center items-center @if($status==1)bg-yellow-100 @else bg-red-100 @endif">
             <div class="w-5 h-5 ">
@@ -97,7 +97,7 @@
 
 </div>
 
-<div class="block max-w-sm p-6 bg-white p-4 m-3 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 w-25 h-36 flex justify-between px-5 pt-5">
+<div class="block max-w-sm p-6 bg-white p-4 m-3 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 w-full md:w-1/2 lg:w-1/3 h-36 flex justify-between px-5 pt-5">
 <p class="font-normal text-gray-700 dark:text-gray-400">Not Set</p>
         <div class="w-12 h-12 p-3 bg-green-300 border border-green-300 rounded-lg flex justify-center items-center">
             <div class="w-5 h-5 text-green-700">
@@ -117,7 +117,7 @@
 
 
 
-<div style="width: 30%; padding-left:0%">
+<div style="width: 50%; padding-right:3%;" class="pt-3">
 
 <livewire:dashboard-items.agents/>
 

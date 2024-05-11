@@ -48,7 +48,7 @@ class acExtensionController extends Controller
     }
     public function extensions_destroy(ac_extension $extension)
     {
-        $extension->delete();
+        $extension->update(['del_status'=>1]);
         return redirect(route('extensions'));
     }
 }

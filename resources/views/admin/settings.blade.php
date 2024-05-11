@@ -5,17 +5,17 @@
 
 
 
-
-<div class="max-w-4xl mx-auto p-4 pt-3 mt-4 m-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" >
+<!-- max-w-4xl  -->
+<div class="mx-auto p-8 max-w-7xl pt-3 mt-4 m-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" >
 
 <h6 class="mb-2 ml-3 text-base font-semibold tracking-tight text-gray-900 dark:text-white" style="font-size: 16px;">Administration</h6>
 
     
-    <hr class="mb-3">
+    <hr class="mb-3"> 
 
-    <div class="flex">
+    <div class="flex mb-4">
 
-    <div class="flex pr-4">
+    <div class="flex ml-6">
     <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mt-3 ">
   <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
 </svg>
@@ -25,17 +25,19 @@
     <p class="ml-3 font-normal text-gray-500 dark:text-gray-400"style="font-size: 13px;">All user Management Operations </p>
     
     </div>
-    </div> &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div> 
+    <!-- &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 
 
-    <div class="flex ml-4">
+    <div class="flex m-auto ml-0">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mt-3 ml-4">
   <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
 </svg>
 
 
 
-    <div><a href="{{route('companies')}}">
+    <div >
+    <a href="{{route('companies')}}">
     <h2 class="mt-2.5 ml-3 mb-2 text-black-900 dark:text-black-900" style="font-size: 16px;">Campaign Management</h2></a>
     <p class="ml-3 font-normal text-gray-500 dark:text-gray-400"style="font-size: 13px;">All campaign Management Operations </p>
     
@@ -50,15 +52,15 @@
 
 
 <div class="pt-5">
-<div class="max-w-4xl mx-auto p-4 pt-3 m-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+<div class="max-w-7xl mx-auto p-4 pt-3 m-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 
 <h6 class="mb-2 ml-3 text-base font-semibold tracking-tight text-gray-900 dark:text-white" style="font-size: 16px;">Call Server Configurations</h6>
 
     
     <hr class="mb-3">
-    <div class="flex m-auto">
+    <div class="flex m-auto mb-4">
 
-    <div class="flex">
+    <div class="flex ml-6">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mt-3">
   <path stroke-linecap="round" stroke-linejoin="round" d="M6 13.5V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 9.75V10.5" />
 </svg>
@@ -91,7 +93,7 @@
 </svg>
 
 
-    <div>
+    <div class="mr-8">
     <a href="{{route('skills')}}"><h2 class="mt-2.5 ml-3 mb-2 text-black-900 dark:text-black-900" style="font-size: 16px;">Skills</h2></a>
     <p class="ml-3 font-normal text-gray-500 dark:text-gray-400"style="font-size: 13px;">Call skills Management.</p>
     </div>

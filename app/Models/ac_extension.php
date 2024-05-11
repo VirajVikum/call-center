@@ -14,6 +14,7 @@ class ac_extension extends Model
         'context',
         'password',
         'status',
+        'del_status'
     ];
 
     protected static function boot()

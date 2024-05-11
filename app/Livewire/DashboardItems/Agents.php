@@ -10,7 +10,7 @@ class Agents extends Component
 {
     public function render()
     {
-        $agents =ac_user::all();
+        $agents =ac_user::where('del_status',0)->get();
         $selectedSkills = DB::table('au_agentqueuestatus')->get();
         
 

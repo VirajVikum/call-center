@@ -19,9 +19,10 @@ class ac_user extends Model
         'gender',	
         'address',		
         'password',			 
-        'extension',
+        'extension', 
         'user_type_id',
-        'status'
+        'status',
+        'del_status',
         ];
     public function userType()
     {

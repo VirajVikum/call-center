@@ -14,7 +14,7 @@ class acUsersController extends Controller
             [
                 	
                 'name'=>'required',	
-                'email'=>'required',
+                'email'=>['required','email','unique:ac_users,email'],
                 'user_name'=>'required',
                 'phone'=>'required',
                 'nic'=>'required',
@@ -23,7 +23,7 @@ class acUsersController extends Controller
                 'user_type_id'=>'required|integer'
             ]
             );
-            $data['password'] = '12345678';
+            $data['password'] = '12345678'; //should create in agents part
             $data['extension'] = '1';
             $newUser = ac_user::create($data);
             return redirect()->route('users');
@@ -61,14 +61,15 @@ class acUsersController extends Controller
 
     public function acusers_delete(ac_user $user)
     {
-        $user->delete();
+        // $user->delete();
+        $user->update(['del_status'=>1]);
         return redirect()->route('users');
     }
 
     public function assign_extension()
     {
         $users = ac_user::with('userType')->get();
-        $extensions=ac_extension::all(); 
+        $extensions=ac_extension::where('del_status',0); 
         return view('users.asign_extensions',compact('users','extensions'));
     }
 

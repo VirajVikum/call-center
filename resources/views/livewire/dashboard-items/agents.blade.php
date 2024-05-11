@@ -1,4 +1,4 @@
-<div wire:poll.1000ms class="relative text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white mr-8 pt-0" style="width: 60%;">
+<div wire:poll.1000ms class="relative text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white mr-8 pt-0" style="width: 80%;">
     @foreach($agnt as $agent)
     
     
@@ -21,10 +21,10 @@
                                 <!-- fill: rgb(240,88,47)     fill: rgb(110,177,225)      fill: rgb(110,177,225)  -->
                             </svg>  &nbsp;&nbsp; 
                             <div style="display: flex; flex-direction: column;">
-                                <div class="text-left text-base font-bold">{{$agent->name}}</div>
+                                <div class="text-left text-base font-bold">{{$agent->name}}</div> 
                                 <div>
                                     @foreach ($skills as $skill)
-                                        @if ($agent->id == $skill->agentid && $skill->status == 1)
+                                        @if ($agent->id == $skill->agentid && $skill->status == 1 && $agent->status == 1)
                                         <span class="bg-green-200 rounded px-1">{{ $skill->skill }}</span>
                                         @endif
                                     @endforeach

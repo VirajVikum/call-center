@@ -50,19 +50,20 @@ $(document).ready(function() {
 
 
 <nav class="bg-gray border-gray-500 dark:bg-gray-900 pt-2"> 
-    <div class="max-w-screen-xl px-4 py-3 ">
+    <div class="max-w-screen-xl px-4 py-1 ">
         <div class="flex items-center">
-            <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
-                <li class="custom-li">
-                    <img src="" class="h-8" alt="AUSO Logo" />
-                </li>
+        <img src="{{ asset('images/logo.png') }}" class="pt-0  mr-3" alt="AUSO logo" style="width:110px;height:60px;"/>
+            <ul class="flex flex-row font-medium mt-2 space-x-8 rtl:space-x-reverse text-sm">
+                <!-- <li class="custom-li">
+                    <img src="{{ asset('images/logo.png') }}" class="pt-0" alt="AUSO logo" style="width:110px;height:60px;"/>
+                </li> -->
                 <li class="custom-li">
                     <a href="{{route('dashboard')}}?var=Dashboard" class="text-gray-900 dark:text-white" aria-current="page">Dashboard</a>
                 </li>
                 <li class="custom-li">
                     <a href="{{route('leads')}}?var=Leads" class="text-gray-900 dark:text-white">Leads</a>
                 </li>
-                <li class="custom-li">
+                <!-- <li class="custom-li">
                     <a href="{{route('tickets')}}?var=Tickets" class="text-gray-900 dark:text-white">Tickets</a>
                 </li>
                 <li class="custom-li">
@@ -70,7 +71,7 @@ $(document).ready(function() {
                 </li>
                 <li class="custom-li">
                     <a href="{{route('contact')}}?var=Contact Feed" class="text-gray-900 dark:text-white">Contact Feed</a>
-                </li>
+                </li> -->
                 <li class="custom-li">
                     <a href="{{route('reports')}}?var=Reports" class="text-gray-900 dark:text-white">Reports</a>
                 </li>
@@ -128,9 +129,11 @@ $(document).ready(function() {
     @endif
 </nav>
 
-        <main class="">
+         <main class="p-4 ml-4">
             @yield('content')
-        </main>
+        </main> 
+
+        
 
 </body>
 </html>

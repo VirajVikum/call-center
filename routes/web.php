@@ -78,5 +78,3 @@ Route::post('/skills/asign',[acSkillController::class,'assign_skill'])->name('as
 
 Route::get('/campaign/{company}/store',[adCampaignController::class,'campaign_assign'])->name('campaign.assign');
 Route::post('/campaign/store',[adCampaignController::class,'data_store'])->name('data.store');
-
-

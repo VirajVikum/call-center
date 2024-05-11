@@ -55,7 +55,8 @@ class acCompanyController extends Controller
 
     public function company_destroy(ac_company $company)
     {
-        $company->delete();
+        // $company->delete(); 
+        $company->update(['del_status'=>1]);
         return redirect(route('companies'))->with('success','product deleted successfully');
     }
 }

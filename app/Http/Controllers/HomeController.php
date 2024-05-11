@@ -31,7 +31,8 @@ class HomeController extends Controller
 
     public function index()
     {   
-        $agents = ac_user::all();
+        // $agents = ac_user::all();
+        $agents = ac_user::where('del_status',0)->get();
         $variable = "Dashboard";
         $status=1;
 
@@ -44,13 +45,20 @@ class HomeController extends Controller
         return view('admin.dashboard', compact('agents', 'variable','status'));
     }
 
+
+
+// dashboard
+
+
+
     public function dashboard(Request $request)
     {
         // $variable = $request->query('var');
         // view()->share('variable', $variable);
         // return view('admin/dashboard')->with('variable', $variable);
 
-        $agents = ac_user::all();
+        // $agents = ac_user::all();
+        $agents = ac_user::where('del_status',0)->get();
         $variable = "Dashboard";
         $status=0;
         view()->share([
@@ -121,19 +129,24 @@ class HomeController extends Controller
     {
         //$users=ac_user::all();
         $ext = ac_extension::all();
-        $users = ac_user::with('userType')->get();
+        // $users = ac_user::with('userType')->get();
+        // $agents = ac_user::where('del_status',0)->with('userType')->get();
+        $users = ac_user::where('del_status', 0)
+                 ->with('userType')
+                 ->get();
         return view('users/user_home',['users'=>$users , 'ext'=>$ext]);
     }
     public function company_settings()
     {
         
-        $company=ac_company::all();
+        $company=ac_company::where('del_status', 0)
+            ->get();
             //return view(route('companies'),['company'=>$company]);
         return view('companies/company_home',['companies'=>$company]);
     }
     public function extension_settings()
     {
-        $extension=ac_extension::all();
+        $extension=ac_extension::where('del_status', 0)->get();
         return view('extensions/extension_home',['extensions'=>$extension]);
     }
     public function asign_extensions()
@@ -145,9 +158,10 @@ class HomeController extends Controller
         $userId = $request->input('user_type_id');
         $extensionId = $request->input('extension');
         
-        $user = ac_user::findOrFail($userId);
-        $exten = ac_extension::findOrFail($extensionId);
-        
+        // $user = ac_user::findOrFail($userId);
+        $user = ac_user::where('del_status',0)->findOrFail($userId);
+        $exten = ac_extension::where('del_status',0)->findOrFail($extensionId);
+         
         //$user->update(['status'=>'1']);
         $exten->update(['status'=>'1']);
         $user->update(['extension'=>$exten->extension]);
@@ -172,7 +186,7 @@ class HomeController extends Controller
  
     public function skills()
     {
-        $users =ac_user::all();
+        $users =ac_user::where('del_status',0)->get();
         $skills = ac_skill::all();
         return view('skills.skill_home',['skills'=>$skills,'users'=>$users]);
     }

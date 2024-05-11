@@ -1,5 +1,5 @@
 
-<div wire:poll.1000ms class="block max-w-sm p-6 bg-white p-4 m-3 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 w-25 h-36 flex justify-between px-5 pt-5">
+<div wire:poll.1000ms class="block max-w-sm p-6 bg-white p-4 m-3 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 w-full md:w-1/2 lg:w-1/3 h-36 flex justify-between px-5 pt-5">
 <div style="display: flex; flex-direction: column;">
 <div>
 <p class="font-normal text-gray-700 dark:text-gray-400">No Answer</p>
