@@ -7,8 +7,13 @@ use App\Models\ac_extension;
 use App\Models\ac_skill;
 use App\Models\ac_user;
 use App\Models\ac_user_types;
+use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Permission;
+// use Spatie\Permission\Contracts\Role;
+use Spatie\Permission\Models\Role;
 
 class HomeController extends Controller
 {
@@ -19,7 +24,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth'); 
     }
 
     /**
@@ -31,8 +36,33 @@ class HomeController extends Controller
 
     public function index()
     {   
+        // Auth::user()->assignRole('admin');
+        // $role = Role::create(['guard_name' => 'admin', 'name' => 'manager']);
+        // $permission = Permission::create(['name' => 'create details']);
+        // dd(Auth::user()->hasRole('admin'));
+        // $role =Role::create(['name'=>'adminstrator']);
+        // $role =Role::create(['name'=>'agent']);
+        // $permission = Permission::create(['name' => 'edit details']);
+
+        // $role = Role::where('name', 'admin')->first();
+        // $permission = Permission::where('name', 'edit details')->first();
+        // $role->givePermissionTo($permission);
+        // $permission->assignRole($role);
+
+
+        // $adminRole = Role::where('name', 'admin')->first();
+
+        // Retrieve the users with user_type = 'admin'
+        // $adminUser = ac_user::find(6);
+
+    // Assign the admin role to these users
+        //$adminUser->assignRole($role);
+    
+
+        
+
         // $agents = ac_user::all();
-        $agents = ac_user::where('del_status',0)->get();
+        $agents = User::where('del_status',0)->get();
         $variable = "Dashboard";
         $status=1;
 
@@ -57,8 +87,8 @@ class HomeController extends Controller
         // view()->share('variable', $variable);
         // return view('admin/dashboard')->with('variable', $variable);
 
-        // $agents = ac_user::all();
-        $agents = ac_user::where('del_status',0)->get();
+        // $agents = User::all();
+        $agents = User::where('del_status',0)->get();
         $variable = "Dashboard";
         $status=0;
         view()->share([
@@ -127,11 +157,11 @@ class HomeController extends Controller
     }
     public function user_settings()
     {
-        //$users=ac_user::all();
+        //$users=User::all();
         $ext = ac_extension::all();
-        // $users = ac_user::with('userType')->get();
-        // $agents = ac_user::where('del_status',0)->with('userType')->get();
-        $users = ac_user::where('del_status', 0)
+        // $users = User::with('userType')->get();
+        // $agents = User::where('del_status',0)->with('userType')->get();
+        $users = User::where('del_status', 0)
                  ->with('userType')
                  ->get();
         return view('users/user_home',['users'=>$users , 'ext'=>$ext]);
@@ -158,8 +188,8 @@ class HomeController extends Controller
         $userId = $request->input('user_type_id');
         $extensionId = $request->input('extension');
         
-        // $user = ac_user::findOrFail($userId);
-        $user = ac_user::where('del_status',0)->findOrFail($userId);
+        // $user = User::findOrFail($userId);
+        $user = User::where('del_status',0)->findOrFail($userId);
         $exten = ac_extension::where('del_status',0)->findOrFail($extensionId);
          
         //$user->update(['status'=>'1']);
@@ -170,7 +200,7 @@ class HomeController extends Controller
         
     }
 
-    public function unasign_extension(ac_user $user)
+    public function unasign_extension(User $user)
     {
         $ext =$user->extension;
         // dd($ext);
@@ -186,7 +216,7 @@ class HomeController extends Controller
  
     public function skills()
     {
-        $users =ac_user::where('del_status',0)->get();
+        $users =User::where('del_status',0)->get();
         $skills = ac_skill::all();
         return view('skills.skill_home',['skills'=>$skills,'users'=>$users]);
     }

@@ -60,9 +60,11 @@ $(document).ready(function() {
                 <li class="custom-li">
                     <a href="{{route('dashboard')}}?var=Dashboard" class="text-gray-900 dark:text-white" aria-current="page">Dashboard</a>
                 </li>
+                
                 <li class="custom-li">
                     <a href="{{route('leads')}}?var=Leads" class="text-gray-900 dark:text-white">Leads</a>
                 </li>
+                
                 <!-- <li class="custom-li">
                     <a href="{{route('tickets')}}?var=Tickets" class="text-gray-900 dark:text-white">Tickets</a>
                 </li>
@@ -75,9 +77,11 @@ $(document).ready(function() {
                 <li class="custom-li">
                     <a href="{{route('reports')}}?var=Reports" class="text-gray-900 dark:text-white">Reports</a>
                 </li>
+                @role('admin')
                 <li class="custom-li">
                     <a href="{{route('settings')}}?var=Settings" class="text-gray-900 dark:text-white">Settings</a>
                 </li>
+                @endrole
                 <div class="absolute right-0">
                 
                 <li class="nav-item dropdown  mr-8"> 

@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Traits\HasRoles;
 
 class ac_user extends Model
 {
-    use HasFactory;
+    use HasFactory, HasRoles;
+    protected $guard_name = 'web';
     protected $fillable = [
         
         'id',	

@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\ac_extension;
 use App\Models\ac_user;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class acUsersController extends Controller
 {
@@ -23,18 +27,33 @@ class acUsersController extends Controller
                 'user_type_id'=>'required|integer'
             ]
             );
-            $data['password'] = '12345678'; //should create in agents part
+            $data['password'] = Hash::make('12345678'); //should create in agents part
             $data['extension'] = '1';
-            $newUser = ac_user::create($data);
+            $newUser = User::create($data); 
+      
+            //$guardName = 'web';
+            // dd($newUser);
+
+            //Log::info('New user created:', ['user' => $newUser]);
+
+
+            if($data['user_type_id']==1)
+            {
+                $newUser->assignRole('admin');
+            }
+            else{
+                $newUser->assignRole('agent');
+            }
+            
             return redirect()->route('users');
     }
 
-    public function acUser_edit(ac_user $user)
+    public function acUser_edit(User $user)
     {
         return view('users.user_update',['user'=>$user]);
     }
 
-    public function acUser_update(ac_user $user,Request $request)
+    public function acUser_update(User $user,Request $request)
     {
      
         $data=$request->validate(
@@ -59,7 +78,7 @@ class acUsersController extends Controller
 	
     }
 
-    public function acusers_delete(ac_user $user)
+    public function acusers_delete(User $user)
     {
         // $user->delete();
         $user->update(['del_status'=>1]);
@@ -68,7 +87,7 @@ class acUsersController extends Controller
 
     public function assign_extension()
     {
-        $users = ac_user::with('userType')->get();
+        $users = User::with('userType')->get();
         $extensions=ac_extension::where('del_status',0); 
         return view('users.asign_extensions',compact('users','extensions'));
     }
