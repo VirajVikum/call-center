@@ -7,6 +7,8 @@
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
+                <div class="d-flex justify-content-center my-3"><img src="{{ asset('images/logo.png') }}" class="pt-0  mr-3" alt="AUSO logo" style="width:150px;height:80px;"/></div>
+
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf

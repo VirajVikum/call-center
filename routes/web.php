@@ -27,6 +27,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/agent', [App\Http\Controllers\HomeController::class, 'agent'])->name('agent');
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
 Route::get('/leads', [App\Http\Controllers\HomeController::class, 'leads'])->name('leads');
 Route::get('/orders', [App\Http\Controllers\HomeController::class, 'orders'])->name('orders');

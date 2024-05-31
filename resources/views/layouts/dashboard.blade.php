@@ -61,9 +61,9 @@ $(document).ready(function() {
                     <a href="{{route('dashboard')}}?var=Dashboard" class="text-gray-900 dark:text-white" aria-current="page">Dashboard</a>
                 </li>
                 
-                <li class="custom-li">
+                <!-- <li class="custom-li">
                     <a href="{{route('leads')}}?var=Leads" class="text-gray-900 dark:text-white">Leads</a>
-                </li>
+                </li> -->
                 
                 <!-- <li class="custom-li">
                     <a href="{{route('tickets')}}?var=Tickets" class="text-gray-900 dark:text-white">Tickets</a>
@@ -74,9 +74,9 @@ $(document).ready(function() {
                 <li class="custom-li">
                     <a href="{{route('contact')}}?var=Contact Feed" class="text-gray-900 dark:text-white">Contact Feed</a>
                 </li> -->
-                <li class="custom-li">
+                <!-- <li class="custom-li">
                     <a href="{{route('reports')}}?var=Reports" class="text-gray-900 dark:text-white">Reports</a>
-                </li>
+                </li> -->
                 @role('admin')
                 <li class="custom-li">
                     <a href="{{route('settings')}}?var=Settings" class="text-gray-900 dark:text-white">Settings</a>

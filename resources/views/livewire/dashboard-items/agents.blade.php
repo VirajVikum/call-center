@@ -21,15 +21,19 @@
                                 <!-- fill: rgb(240,88,47)     fill: rgb(110,177,225)      fill: rgb(110,177,225)  -->
                             </svg>  &nbsp;&nbsp; 
                             <div style="display: flex; flex-direction: column;">
-                                <div class="text-left font-bold fill-blue-500" style="color:gray;">{{$agent->name}}</div> 
-                                <div>
+                                <div class="flex justify-between">
+                                    <div class="text-left font-bold fill-blue-500" style="color:gray;">{{$agent->name}}</div>
+                                    <div class="">@if ($agent->status == 1)<b><span class=" pl-11 text-red-400">{{$agent->total_calls}}</span></b> <b><span class=" pl-11 text-success">{{$agent->answered_calls}}</span></b>@endif</div>
+                                </div>
+                                <div class="text-left">
                                     @foreach ($skills as $skill)
                                         @if ($agent->id == $skill->agentid && $skill->status == 1 && $agent->status == 1)
-                                        <span class="bg-green-200 rounded px-1">{{ $skill->skill }}</span>
+                                            <span class="bg-green-200 rounded px-1">{{ $skill->skill }}</span>
                                         @endif
                                     @endforeach
                                 </div>
                             </div>
+
 
                     
                 </button>

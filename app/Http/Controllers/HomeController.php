@@ -75,6 +75,13 @@ class HomeController extends Controller
         return view('admin.dashboard', compact('agents', 'variable','status'));
     }
 
+    public function agent()
+    {
+        return view('agents');
+    }
+
+
+
 
 
 // dashboard

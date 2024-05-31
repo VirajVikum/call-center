@@ -39,10 +39,18 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    
+
     protected function authenticated(Request $request, $user)
     {
         $user->status=1;
         $user->save();
+
+        if ($user->user_type_id == '1') {
+            return redirect('/home');
+        } else {
+            return redirect('/agent');
+        }
     }
 
     public function logout(Request $request)
