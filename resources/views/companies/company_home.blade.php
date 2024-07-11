@@ -11,8 +11,8 @@
     
     <h3 class="p-1 ">Campaign Management</h3>
 
-    <div class="absolute right-0">
-        <button class="border border-gray rounded-md p-1">Assign Extensions</button>
+    <div class="absolute right-0 mr-8">
+        <!-- <button class="border border-gray rounded-md p-1">Assign Extensions</button> -->
         <button class="border border-gray rounded-md p-1 ml-2 mr-3"data-modal-target="crud-modal" data-modal-toggle="crud-modal">Create Campaign</button>
     </div>
 

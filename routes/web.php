@@ -27,8 +27,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/agent', [App\Http\Controllers\HomeController::class, 'agent'])->name('agent');
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
+Route::get('/agent', [App\Http\Controllers\HomeController::class, 'agent'])->name('agent');
 Route::get('/leads', [App\Http\Controllers\HomeController::class, 'leads'])->name('leads');
 Route::get('/orders', [App\Http\Controllers\HomeController::class, 'orders'])->name('orders');
 Route::get('/reports', [App\Http\Controllers\HomeController::class, 'reports'])->name('reports');
@@ -79,3 +79,12 @@ Route::post('/skills/asign',[acSkillController::class,'assign_skill'])->name('as
 
 Route::get('/campaign/{company}/store',[adCampaignController::class,'campaign_assign'])->name('campaign.assign');
 Route::post('/campaign/store',[adCampaignController::class,'data_store'])->name('data.store');
+
+
+
+// agents panel
+
+Route::get('/agntDashboard', [App\Http\Controllers\agentHomeController::class, 'dashboard'])->name('agent.dashboard');
+Route::get('/agntLeads', [App\Http\Controllers\agentHomeController::class, 'leads'])->name('agent.leads');
+Route::get('/agntOrders', [App\Http\Controllers\agentHomeController::class, 'orders'])->name('agent.orders');
+Route::get('/agntTickets', [App\Http\Controllers\agentHomeController::class, 'tickets'])->name('agent.tickets');

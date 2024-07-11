@@ -223,7 +223,8 @@ class HomeController extends Controller
  
     public function skills()
     {
-        $users =User::where('del_status',0)->get();
+        
+        $users =User::where('del_status',0)->where('user_type_id',4)->get(); 
         $skills = ac_skill::all();
         return view('skills.skill_home',['skills'=>$skills,'users'=>$users]);
     }

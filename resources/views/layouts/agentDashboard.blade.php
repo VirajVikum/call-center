@@ -58,19 +58,21 @@ $(document).ready(function() {
                     <img src="{{ asset('images/logo.png') }}" class="pt-0" alt="AUSO logo" style="width:110px;height:60px;"/>
                 </li> -->
                 <li class="custom-li">
-                    <a href="{{route('dashboard')}}?var=Dashboard" class="text-gray-900 dark:text-white" aria-current="page">Dashboard</a>
+                    <a href="{{route('agent.dashboard')}}?var=Dashboard" class="text-gray-900 dark:text-white" aria-current="page">Dashboard</a>
                 </li>
                 
-                <!-- <li class="custom-li">
-                    <a href="{{route('leads')}}?var=Leads" class="text-gray-900 dark:text-white">Leads</a>
-                </li> -->
-                
-                <!-- <li class="custom-li">
-                    <a href="{{route('tickets')}}?var=Tickets" class="text-gray-900 dark:text-white">Tickets</a>
-                </li>
                 <li class="custom-li">
-                    <a href="{{route('orders')}}?var=Orders" class="text-gray-900 dark:text-white">Orders</a>
+                    <a href="{{route('agent.leads')}}?var=Leads" class="text-gray-900 dark:text-white">Leads</a>
                 </li>
+                
+                 <li class="custom-li">
+                    <a href="{{route('agent.tickets')}}?var=Tickets" class="text-gray-900 dark:text-white">Tickets</a>
+                </li>
+                
+                <li class="custom-li">
+                    <a href="{{route('agent.orders')}}?var=Orders" class="text-gray-900 dark:text-white">Orders</a>
+                </li>
+                <!--
                 <li class="custom-li">
                     <a href="{{route('contact')}}?var=Contact Feed" class="text-gray-900 dark:text-white">Contact Feed</a>
                 </li> -->
@@ -133,7 +135,7 @@ $(document).ready(function() {
     @endif
 </nav>
 
-         <main class="p-4 ml-0">
+         <main class="p-0 ml-0">
             @yield('content')
         </main> 
 

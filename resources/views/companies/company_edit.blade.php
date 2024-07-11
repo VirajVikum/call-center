@@ -21,7 +21,7 @@
     <h3 class="p-1 ml-6">Campaign Management</h3>
 
     <div>
-        <button class="border border-gray rounded-md p-1">Assign Extensions</button>
+        <!-- <button class="border border-gray rounded-md p-1">Assign Extensions</button> -->
         <button class="border border-gray rounded-md p-1 ml-2"data-modal-target="crud-modal" data-modal-toggle="crud-modal">Add Company</button>
 
 
@@ -38,7 +38,7 @@
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Update Company
+                    Update Campaign
                 </h3><a href="{{route('companies')}}">
                 <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
