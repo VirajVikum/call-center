@@ -25,56 +25,48 @@ class acSkillController extends Controller
 
     
 
-public function assign_skill(Request $request)
+    public function assign_skill(Request $request)
 {
     // Retrieve the skill objects array
     $skillObjects = $request->input('skill');
-    // dd($skillObjects);
+
     // Convert the JSON strings back to arrays
     $decodedSkills = array_map('json_decode', $skillObjects);
-    // dd($decodedSkills);
+
     // Modify the skill objects to remove unwanted fields
     $modifiedSkills = array_map(function($skill) {
         unset($skill->updated_at, $skill->moh, $skill->created_at);
         return $skill;
-
     }, $decodedSkills);
 
-    //return only skills
+    // Extract only skills
     $onlySkills = array_map(function($skill) {
-        
         return $skill->skill;
-        
     }, $decodedSkills);
 
-    // Convert the modified array to a JSON string
-    //$serializedSkillIds = json_encode($modifiedSkills);
-    // $serializedSkills = json_encode($onlySkills);
+    // Convert the skills to a string
     $serializedSkills = implode(', ', $onlySkills);
-    
-//$dataAry = json_decode($serializedSkillIds, true);
 
-$result = [];
-foreach ($modifiedSkills as $item) {
-    //$result[$item['id']] = $item['skill']; // access properties of array
-    $result[$item->id] = $item->skill;     // access properties of object
-}
+    // Prepare skill IDs and skills mapping
+    $result = [];
+    foreach ($modifiedSkills as $item) {
+        $result[$item->id] = $item->skill; // Access properties of object
+    }
 
-// Convert the array to JSON
-$jsonResult = json_encode($result);
+    // Convert the array to JSON
+    $jsonResult = json_encode($result);
 
     // Retrieve the agent ID
     $agentId = $request->input('user_id');
 
-    // Create the data array for insertion
-    $data = [
-        'agent_id' => $agentId,
-        'skills' => $serializedSkills,
-        'skill_ids' => $jsonResult
-    ];
-
-    // Create a new record in the database
-    $newRecord = ad_agentSkill::create($data);
+    // Create or update the record in the database
+    ad_agentSkill::updateOrCreate(
+        ['agent_id' => $agentId], // Condition to find the record
+        [
+            'skills' => $serializedSkills,
+            'skill_ids' => $jsonResult
+        ]
+    );
 
     // Redirect to the skills route
     return redirect(route('skills'));

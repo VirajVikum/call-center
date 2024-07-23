@@ -30,7 +30,7 @@
                                         @if ($agent->id == $skill->agentid && $skill->status == 1 && $agent->status == 1)
                                             <span class="bg-green-200 rounded px-1">{{ $skill->skill }}</span>
                                         @endif
-                                    @endforeach
+                                    @endforeach 
                                 </div>
                             </div>
 

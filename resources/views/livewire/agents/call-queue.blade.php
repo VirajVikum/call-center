@@ -1,10 +1,26 @@
-<div wire:poll.10ms class="block max-w-sm p-6 bg-white p-4 m-3 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 w-full md:w-1/2 lg:w-1/3 h-36 flex justify-between px-5 pt-5">
+<div class="block max-w-sm p-6 bg-white p-4 m-3 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 w-full md:w-1/2 lg:w-1/3 h-36 flex justify-between px-5 pt-5">
 <div style="display: flex; flex-direction: column;">
 <div>
-<p class="font-normal text-gray-700 dark:text-gray-400">Ongoing</p>
+<p class="font-normal text-gray-700 dark:text-gray-400">
+    @if($selectedCampaignId)
+        <p>Selected Campaign ID: {{ $selectedCampaignId }}</p>
+    @else
+        <p>No campaign selected.</p> 
+    @endif
+</p>
 </div>
 <div class="pt-1">
-    <span class="text-base font-semibold pl-5">Query Count</span>
+    <span class="text-base font-semibold pl-5">
+    @if($selectedSkills)
+    @foreach($selectedSkills as $skill)
+        <p>Selected skills: {{ $skill }}</p>
+    @endforeach    
+    @else
+        <p>No skill selected.</p>
+        <script>console.log($selectedSkills);</script>
+    @endif
+
+    </span>
 </div>
 </div>
 <!-- <div class="w-12 h-12 bg-orange-300 border border-orange-200 rounded-lg flex justify-center items-center opacity-50">

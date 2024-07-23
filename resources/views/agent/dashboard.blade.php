@@ -33,7 +33,7 @@
 
 <livewire:agents.messages />
 <livewire:agents.skills />
-<livewire:agents.ongoing />
+<livewire:agents.call-queue />
 
 
 </div>

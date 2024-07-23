@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ac_company;
 use Illuminate\Http\Request;
 
 class agentHomeController extends Controller
@@ -10,7 +11,11 @@ class agentHomeController extends Controller
     {
         $variable = $request->query('var');
         view()->share('variable', $variable);
-        return view('agent/dashboard')->with('variable', $variable);
+
+        $campaigns=ac_company::where('del_status', 0)->get();
+        view()->share('campaigns', $campaigns);
+
+        return view('agent/dashboard', compact('variable','campaigns'));
 
     }
 

@@ -48,7 +48,12 @@ class LoginController extends Controller
 
         if ($user->user_type_id == '1') {
             return redirect('/home');
-        } else {
+        } 
+        elseif($user->user_type_id == '4') {
+            $var="Dashboard";
+            return redirect('/agntDashboard?var=' . $var);
+        }
+        else {
             return redirect('/agent');
         }
     }

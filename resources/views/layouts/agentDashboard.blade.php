@@ -17,6 +17,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />    <title>Document</title>
 
+    
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
@@ -124,14 +125,45 @@ $(document).ready(function() {
 </nav> -->
 @if(isset($variable))
 <nav class="bg-white border-black-700 dark:bg-gray-500 pl-0">
-    <div class="flex flex-wrap justify-between items-center max-w-screen-xl p-3 ">
+    
+    <div class="flex flex-wrap justify-between items-center  max-w-screen-xl p-3 px-4">
          
     
     <h3 class="p-1 ml-6">{{ $variable }}</h3>
+
+    <div class="absolute right-2 px-0 flex space-x-4 pr-4">
+        <!-- <form class="max-w-sm pr-4">
+            <select id="envType" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected>Select Option</option>
+                <option value="In Bound">In Bound</option>
+                <option value="Out Bound">Out Bound</option>
+            </select>
+        </form> -->
+        {{-- <livewire:agents-dashboard-items.select-bound /> --}}
+        <livewire:agents-dashboard-items.select-campaign />
+
+        <!-- <form class="max-w-sm pr-5" id="campaignsForm" style="display: none;">
+            <select id="campaigns" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected>Select Campaign</option>
+                {{-- @if(isset($campaigns))
+                    @foreach($campaigns as $campaign)
+                    <option value="{{ $campaign->id }}">{{ $campaign->name }}</option>
+                    @endforeach
+                @endif --}}
+            </select>
+        </form> -->
+        
+        
+    </div>
+
+
+    
+    </div>
     
         
          
-    </div>
+</div>
+
     @endif
 </nav>
 
@@ -140,6 +172,6 @@ $(document).ready(function() {
         </main> 
 
         
-
+        @livewireScripts
 </body>
 </html>
