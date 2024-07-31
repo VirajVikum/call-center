@@ -25,7 +25,7 @@ class SelectCampaign extends Component
 
     public function render()
     {
-        return view('livewire.agents-dashboard-items.select-campaign');
+        return view('livewire.agents-dashboard-items.select-campaign'); 
     }
 
 
@@ -35,7 +35,7 @@ class SelectCampaign extends Component
 
         Cache::put('selected-campaign', $this->selectedCampaign, 60);
     }
-
+ 
 
 }
  

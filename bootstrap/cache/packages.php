@@ -27,6 +27,13 @@
       0 => 'Laravel\\Ui\\UiServiceProvider',
     ),
   ),
+  'livewire-ui/modal' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'LivewireUI\\Modal\\LivewireModalServiceProvider',
+    ),
+  ),
   'livewire/livewire' => 
   array (
     'providers' => 
@@ -86,6 +93,13 @@
     'providers' => 
     array (
       0 => 'Spatie\\Permission\\PermissionServiceProvider',
+    ),
+  ),
+  'wire-elements/modal' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'LivewireUI\\Modal\\LivewireModalServiceProvider',
     ),
   ),
 );

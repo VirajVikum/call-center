@@ -1,4 +1,4 @@
-<div wire:poll.1000ms class="relative text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white mr-2 pt-0" style="width: 80%;">
+<div class="relative text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white mr-2 pt-0" style="width: 80%;">
     @foreach($agnt as $agent)
     
     
@@ -26,12 +26,21 @@
                                     <div class="">@if ($agent->status == 1)<b><span class=" pl-11 text-red-400">{{$agent->total_calls}}</span></b> <b><span class=" pl-11 text-success">{{$agent->answered_calls}}</span></b>@endif</div>
                                 </div>
                                 <div class="text-left">
-                                    @foreach ($skills as $skill)
+                                    {{-- @foreach ($skills as $skill)
                                         @if ($agent->id == $skill->agentid && $skill->status == 1 && $agent->status == 1)
                                             <span class="bg-green-200 rounded px-1">{{ $skill->skill }}</span>
+                                            
+                                        @endif --}}
+                                        @foreach ($selectedSkills as $skill)
+                                        @if ($agent->id == $userId && $agent->status == 1)
+                                            <span class="bg-green-200 rounded px-1">{{ $skill }}</span>
+                                            
+                                            
                                         @endif
                                     @endforeach
+                                    
                                 </div>
+                                
                             </div>
 
 

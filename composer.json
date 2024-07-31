@@ -11,6 +11,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.4",
+        "livewire-ui/modal": "^2.0",
         "livewire/livewire": "^3.4",
         "maatwebsite/excel": "^3.1",
         "spatie/laravel-permission": "^6.7",
@@ -21,7 +22,8 @@
         "symfony/mailer": "*",
         "symfony/process": "*",
         "symfony/routing": "*",
-        "symfony/translation": "*"
+        "symfony/translation": "*",
+        "wire-elements/modal": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

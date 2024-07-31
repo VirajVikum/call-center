@@ -36,6 +36,7 @@
 <livewire:agents.call-queue />
 
 
+
 </div>
 
 </div>

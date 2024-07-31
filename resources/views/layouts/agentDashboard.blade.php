@@ -17,6 +17,22 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />    <title>Document</title>
 
+    <!-- Styles -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+       
+
+    {{-- @livewireStyles --}}
+
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+    @livewireStyles
+    {{-- <link rel="stylesheet" href="https://unpkg.com/@livewire-ui/modal@latest/public/css/livewire-ui-modal.css"> --}}
+
+
+
+
+
+
     
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
@@ -172,6 +188,16 @@ $(document).ready(function() {
         </main> 
 
         
+
+
+        
+
+        {{-- @livewire('wire-elements-modal') --}}
         @livewireScripts
+
+        
+        
+    
+        
 </body>
 </html>

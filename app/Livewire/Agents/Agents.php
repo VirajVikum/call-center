@@ -5,10 +5,23 @@ namespace App\Livewire\Agents;
 use App\Models\CallData;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Livewire\Attributes\On;
 use Livewire\Component;
+
+
 
 class Agents extends Component
 {
+    public $selectedSkills = [];
+    public $userId ;
+
+    #[On('update-selected-skills')]
+    public function updateSelectedSkills($updatedSkills,$userId)
+    {
+        $this->selectedSkills=$updatedSkills;
+        $this->userId=$userId;
+    }
+
     public function render()
     {
         $agents =User::where('del_status',0)->where('user_type_id','!=',1)->get();
@@ -24,9 +37,10 @@ class Agents extends Component
         $agent->total_calls = $agentCallCount ? $agentCallCount->total_calls : '00';
         $agent->answered_calls = $agentCallCount ? $agentCallCount->answered_calls : '00';
         return $agent;
+        
+        
     });
         
-
-        return view('livewire.dashboard-items.agents',['agnt'=>$agentsWithCallCounts , 'skills'=>$selectedSkills]);
+        return view('livewire.agents.agents',['agnt'=>$agentsWithCallCounts , 'skills'=>$selectedSkills,]);
     }
 }

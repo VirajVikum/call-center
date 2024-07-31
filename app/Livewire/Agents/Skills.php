@@ -39,7 +39,7 @@ class Skills extends Component
 
     public function updatedSelectedSkills($value)
     {
-        $this->dispatch('update-selected-skills',$this->selectedSkills);
+        $this->dispatch('update-selected-skills',$this->selectedSkills,Auth::id());
         Cache::put('selected-skills', $this->selectedSkills, 60);
     }
 

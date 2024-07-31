@@ -17,6 +17,8 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />    <title>Document</title>
 
+    @livewireStyles
+
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
@@ -137,6 +139,10 @@ $(document).ready(function() {
             @yield('content')
         </main> 
 
+
+        @livewireScripts
+        {{-- @livewire('livewire-ui-modal') --}}
+        
         
 
 </body>
