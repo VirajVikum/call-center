@@ -15,7 +15,7 @@ class SelectCampaign extends Component
 
     public function mount()
     {
-        $this->campaigns=ac_company::where('del_status', 0)->get();
+        $this->campaigns=ac_company::where('del_status', 0)->get(); 
 
         $this->selectedCampaign =  Cache::remember('selected-campaign', 60, function () {
             return [];
@@ -32,6 +32,7 @@ class SelectCampaign extends Component
     public function updatedSelectedCampaign($value)
     {
         $this->dispatch('update-campaign',$this->selectedCampaign);
+        // $this->dispatch('update-campaignId',$this->selectedCampaign);
 
         Cache::put('selected-campaign', $this->selectedCampaign, 60);
     }

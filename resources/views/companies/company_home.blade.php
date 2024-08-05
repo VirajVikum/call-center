@@ -188,7 +188,7 @@
                     <!-- <button class="border border-gray rounded-md p-1 assign-campaign-btn" type="button" data-modal-target="campaign-assign" data-company-name="{{$company->name}}" data-modal-toggle="campaign-assign">Assign Campaign</button> -->
 
                     <a href="{{route('campaign.assign',['company'=>$company]) }}">
-                    <button class="border border-gray rounded-md p-1 ">Upload sheet</button>
+                    <button class="border border-gray rounded-md p-1 ">Upload sheet</button> 
                     </a>
    
 </button>

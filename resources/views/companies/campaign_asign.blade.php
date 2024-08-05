@@ -57,7 +57,7 @@
                 <div class="grid gap-4 m-4 mt-0  grid-cols-2">
                     <div class="col-span-2 sm:col-span-1">
                         <label for="selected_company_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Campaign Name</label>
-                        <input type="text" name="selected_company_id" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Company name" value="{{$company->name}}" readonly>
+                        <input type="text" name="selected_company_id" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Company name" value="{{$company->id}}" readonly>
                     </div>  
                 </div>
                 <div class="grid gap-4 m-4 mt-0  grid-cols-2">

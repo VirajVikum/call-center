@@ -13,7 +13,7 @@
                 <option selected value="">Select Campaign</option>
                 @if(isset($campaigns))
                     @foreach($campaigns as $campaign)
-                    <option value="{{ $campaign->name }}">{{ $campaign->name }}</option>
+                    <option value="{{ $campaign->id }}">{{ $campaign->name }}</option>  
                     @endforeach 
                 @endif
             </select> 

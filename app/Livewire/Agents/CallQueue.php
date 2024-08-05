@@ -60,7 +60,7 @@ class CallQueue extends Component
 
     public function openModal()
     {
-        $this->dispatch('open-modal',$this->phone1,$this->customerLan,$this->campaignData);
+        $this->dispatch('open-modal',$this->phone1,$this->customerLan,$this->campaignData,$this->selectedCampaignId);
     }
 
     
@@ -82,10 +82,10 @@ class CallQueue extends Component
 
     public function render()
     {
-        if($this->selectedCampaignId && $this->selectedSkills)
-        {
-            $this->showStart=true;
-        }
+        // if($this->selectedCampaignId && $this->selectedSkills)
+        // {
+        //     $this->showStart=true;
+        // }
 
         return view('livewire.agents.call-queue');
     } 
@@ -96,6 +96,10 @@ class CallQueue extends Component
         if (!empty($this->selectedSkills) && $this->selectedCampaignId != null)
         {
         $campaign = ad_campaign::where('campaign_id', $this->selectedCampaignId)
+        ->where(function($query) {
+            $query->where('status', '0')
+                  ->orWhere('status', '2');
+        })
         ->whereIn('language', $this->selectedSkills)
         ->first();
         
@@ -107,6 +111,7 @@ class CallQueue extends Component
 
                 // $subCampaigns = ad_campaign::where('contact_1',$this->phone1)->get();
                 $this->campaignData= ad_campaign::where('contact_1',$this->phone1)->get();
+                // ad_campaign::where('contact_1', $this->phone1)->update(['status' => '1']);
                 
             }
             else{

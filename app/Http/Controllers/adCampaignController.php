@@ -154,7 +154,7 @@ class adCampaignController extends Controller
             'contact_1' => $row_values[$contIndex],
             'contact_2' => '0119687954',
         
-            'language' => isset($row_values[$lanIndex]) ? $row_values[$lanIndex] : '',
+            'language' => isset($row_values[$lanIndex]) ? $row_values[$lanIndex] : '', 
             'data' => $json_data_set,
         ]);
     }

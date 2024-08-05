@@ -15,6 +15,7 @@
                     {{-- <button wire:click="$dispatch('openModals', { component: 'agents-dashboard-items.queue-see-more', data: {{$phone1}} })" class=" rounded">see more</button> --}}
                     <button wire:click="openModal" class=" rounded">see more</button>
                     
+                    
                     @else
                     <p>No skills or campaign selected.</p>
                     @endif

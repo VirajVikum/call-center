@@ -16,5 +16,16 @@ class ad_campaign extends Model
         'status',
         'language',
         'data',
+        'outlet',
+        'last_call_status',
+        'agent_id',
+        'call_attempt',
+        'next_available_at',
+        'satisfaction_level',
+        'satisfaction_status',
+        'satisfaction_reasons',
+        'dissatisfaction_reasons',
+        'completed_date',
+        'remarks',
     ];
 }

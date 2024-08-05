@@ -11,11 +11,13 @@ class QueueSeeMore extends Component
     public $isOpen = false;
     public $phone;
     public $skill;
+    public $campaignId;
     public $campaignData;
     public $campaignMoreData;
 
+
     #[On('open-modal')]
-    public function openModal($phone,$lan,$data)
+    public function openModal($phone,$lan,$data,$campaignId)
     {
         $this->phone=$phone;
         $this->skill=$lan;
@@ -32,6 +34,7 @@ class QueueSeeMore extends Component
         })->all(); // Convert the collection back to an array if needed
 
         // dd($this->campaignData); // Uncomment for debugging
+        $this->campaignId=$campaignId;
             
     }
 
@@ -40,6 +43,13 @@ class QueueSeeMore extends Component
     public function close()
     {
         $this->isOpen = false;
+    }
+
+
+    public function answered()
+    {
+        
+        $this->dispatch('open-answered',$this->phone,$this->campaignId);
     }
 
 
