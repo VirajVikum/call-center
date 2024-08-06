@@ -111,7 +111,7 @@ class CallQueue extends Component
 
                 // $subCampaigns = ad_campaign::where('contact_1',$this->phone1)->get();
                 $this->campaignData= ad_campaign::where('contact_1',$this->phone1)->get();
-                // ad_campaign::where('contact_1', $this->phone1)->update(['status' => '1']);
+                ad_campaign::where('contact_1', $this->phone1)->update(['status' => '1']);
                 
             }
             else{

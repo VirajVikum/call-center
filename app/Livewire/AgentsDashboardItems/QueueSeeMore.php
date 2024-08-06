@@ -46,10 +46,10 @@ class QueueSeeMore extends Component
     }
 
 
-    public function answered()
+    public function answered($rowId)
     {
         
-        $this->dispatch('open-answered',$this->phone,$this->campaignId);
+        $this->dispatch('open-answered',$this->phone,$this->campaignId,$rowId);
     }
 
 

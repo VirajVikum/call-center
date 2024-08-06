@@ -28,12 +28,12 @@
                                                 @if(is_array($reason))
                                                     @foreach($reason as $item)
                                                         <li class="flex items-center">
-                                                            <input type="checkbox" class="mr-2">{{ $item }}
+                                                            <input type="checkbox" wire:model='selectedSatisfactReasons' value="{{$item}}" class="mr-2">{{ $item }}
                                                         </li>
                                                     @endforeach
                                                 @else
                                                     <li class="flex items-center">
-                                                        <input type="checkbox" class="mr-2">{{ $reason }}
+                                                        <input type="checkbox" wire:model='selectedSatisfactReasons' value="{{$reason}}" class="mr-2">{{ $reason }}
                                                     </li>
                                                 @endif
                                             @endforeach
@@ -52,10 +52,10 @@
                                         @foreach($disSatisfactReasons as $reason)
                                             @if(is_array($reason))
                                                 @foreach($reason as $item)
-                                                    <li class="flex items-center text-11px"><input type="checkbox" class=" mr-2">{{ $item }}</li>
+                                                    <li class="flex items-center text-11px"><input type="checkbox" wire:model='selectedDisSatisfactReasons' value="{{$item}}" class=" mr-2">{{ $item }}</li>
                                                 @endforeach
                                             @else
-                                                <li><input type="checkbox" class=" mr-2">{{ $reason }}</li>
+                                                <li><input type="checkbox" class=" mr-2" wire:model='selectedDisSatisfactReasons' value="{{$reason}}">{{ $reason }}</li>
                                             @endif
                                         @endforeach
                                     </ul>
@@ -67,9 +67,9 @@
 
                             <div>
                                 <h1 class="py-2 font-bold">Remarks</h1>
-                                <textarea name="" id="" cols="60" rows="5"></textarea><br>
+                                <textarea name="" id="" cols="60" wire:model='remarks' rows="5"></textarea><br>
 
-                                <button wire:click="answered" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Submit</button>
+                                <button wire:click="updateCampaign" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Submit</button>
                             </div>
 
                             

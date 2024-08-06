@@ -13,9 +13,10 @@ class Rating extends Component
     {
         $this->rating = $rating;
         $this->hoverRating = $rating; // Ensure the clicked emoji remains highlighted
+        $this->dispatch('set-rating',$this->rating);
     }
 
-    public function setHoverRating($rating)
+    public function setHoverRating($rating) 
     {
         $this->hoverRating = $rating;
     }
