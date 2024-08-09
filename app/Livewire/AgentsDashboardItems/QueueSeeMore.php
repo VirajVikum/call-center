@@ -51,6 +51,13 @@ class QueueSeeMore extends Component
         
         $this->dispatch('open-answered',$this->phone,$this->campaignId,$rowId);
     }
+    
+
+    public function callBack($rowId)
+    {
+        
+        $this->dispatch('open-callback',$this->phone,$this->campaignId,$rowId);
+    }
 
 
     public function render()

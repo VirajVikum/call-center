@@ -97,8 +97,8 @@ class CallQueue extends Component
         {
         $campaign = ad_campaign::where('campaign_id', $this->selectedCampaignId)
         ->where(function($query) {
-            $query->where('status', '0')
-                  ->orWhere('status', '2');
+            $query->where('status', '0') // not in a queue 
+                  ->orWhere('last_call_status', Null); // not completed  calls of that number
         })
         ->whereIn('language', $this->selectedSkills)
         ->first();
@@ -109,9 +109,16 @@ class CallQueue extends Component
                 
                 $this->customerLan=$campaign->language;
 
-                // $subCampaigns = ad_campaign::where('contact_1',$this->phone1)->get();
+                
                 $this->campaignData= ad_campaign::where('contact_1',$this->phone1)->get();
-                ad_campaign::where('contact_1', $this->phone1)->update(['status' => '1']);
+                // ad_campaign::where('contact_1', $this->phone1)->update(['status' => '1']);       //(to avoid show the number to other agent)
+
+                // last call status------>
+                        // 1- answered
+                        // 2-call back
+                        // 3-
+                        // 4-
+
                 
             }
             else{
