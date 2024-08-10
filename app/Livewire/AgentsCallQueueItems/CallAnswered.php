@@ -46,7 +46,7 @@ class CallAnswered extends Component
         $this->campaignId = $campaignId;
         // Log::info('Received campaignId: ' . $campaignId);
         $this->updateReasons();
-        dd($rowId);
+        // dd($rowId);
     }
 
 
@@ -137,7 +137,7 @@ class CallAnswered extends Component
         $time = new DateTime();
         // $formattedTime = $time->format('Y-m-d H:i:s');
         $updateRow = ad_campaign::find($this->rowId);
-        $updateRow->update(['last_call_status'=>'1','agent_id'=>auth()->id(),'call_attempt'=>$this->callAttempt,'satisfaction_level'=>$this->rating,'satisfaction_status'=>$this->satisfactStatus,'satisfaction_reasons'=>$this->selectedSatisfactReasons,'dissatisfaction_reasons'=>$this->selectedDisSatisfactReasons,'completed_date'=>$time,'remarks'=>$this->remarks]);
+        $updateRow->update(['last_call_status'=>'1','status'=>'1','agent_id'=>auth()->id(),'call_attempt'=>$this->callAttempt,'satisfaction_level'=>$this->rating,'satisfaction_status'=>$this->satisfactStatus,'satisfaction_reasons'=>$this->selectedSatisfactReasons,'dissatisfaction_reasons'=>$this->selectedDisSatisfactReasons,'completed_date'=>$time,'remarks'=>$this->remarks]);
 
         // dd($updateRow);
 
@@ -159,6 +159,8 @@ class CallAnswered extends Component
     {
         // dd($rowId);
         $this->rowId=$rowId;
+        $this->phone=$phone;
+        $this->campaignId=$campaignId;
         $this->isOpen=true;
         $this->iscallback =true;
         $this->date = (new \DateTime())->format('Y-m-d');
@@ -176,8 +178,16 @@ class CallAnswered extends Component
         $dateTimeString = $this->date . ' ' . $this->CallBackTime;
         $formattedDateTime = date('Y-m-d H:i', strtotime($dateTimeString));
 
-        $updateRow = ad_campaign::find($this->rowId);
-        $updateRow->update(['last_call_status'=>'2','next_available_at'=>$formattedDateTime,'agent_id'=>auth()->id()]);
+        // $updateRow = ad_campaign::find($this->rowId);
+        // $updateRow->update(['last_call_status'=>'2','next_available_at'=>$formattedDateTime,'agent_id'=>auth()->id()]);
+
+        // dd($this->phone);
+        ad_campaign::where('contact_1', $this->phone)
+        ->update([
+            'last_call_status' => '2',
+            'next_available_at' => $formattedDateTime,
+            'agent_id' => auth()->id()
+        ]);
         $this->iscallback =false;
         $this->isOpen=false;
 
