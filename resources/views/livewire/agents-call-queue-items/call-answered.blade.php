@@ -146,6 +146,18 @@
         </div>
     @endif
 
+    @if($isNoAnswer)
+    <div>No Answer / UnReachable</div>
+    <div class=" p-3">
+        Call Count = {{$callCount}}
+    
+    </div>
+    </div>
+    @endif
+
+
+
+
 
 
 

@@ -2,6 +2,8 @@
 
 namespace App\Livewire\AgentsDashboardItems;
 
+use App\Models\ad_campaign;
+use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use LivewireUI\Modal\ModalComponent;
@@ -14,6 +16,8 @@ class QueueSeeMore extends Component
     public $campaignId;
     public $campaignData;
     public $campaignMoreData;
+    public $isCallAnswered =false;
+    public $completedRows=[];
 
 
     #[On('open-modal')]
@@ -45,18 +49,57 @@ class QueueSeeMore extends Component
         $this->isOpen = false;
     }
 
+    public function callAnswered()
+    {
+        $this->isCallAnswered =true;
+        Log::info('Answered button clicked', ['time' => now()]);
+    }
 
+
+    // submit button of answered form
     public function answered($rowId)
     {
         
         $this->dispatch('open-answered',$this->phone,$this->campaignId,$rowId);
+        Log::info('Clicked submit button of answered blade', ['time' => now()]);
     }
-    
 
-    public function callBack($rowId)
+    #[On('completed-job')]
+    public function completedRow($rowId)
+    {
+        $this->completedRows;
+        $this->completedRows[] = $rowId;
+    }
+
+
+    public function callBack()
     {
         
-        $this->dispatch('open-callback',$this->phone,$this->campaignId,$rowId);
+        $this->dispatch('open-callback',$this->phone,$this->campaignId);
+    }
+
+
+    public function noAnswered()
+    {
+        
+        $this->dispatch('open-noAnswer',$this->phone,$this->campaignId);
+    }
+
+    public function unReachable()
+    {
+        
+        $this->dispatch('open-noAnswer',$this->phone,$this->campaignId);
+    }
+
+    public function notInUse()
+    {
+        ad_campaign::where('contact_1', $this->phone)
+        ->update([
+            'last_call_status' => '5',
+            'status'=> -1 ,
+            'agent_id' => auth()->id()
+        ]);
+        
     }
 
 
@@ -65,3 +108,11 @@ class QueueSeeMore extends Component
         return view('livewire.agents-dashboard-items.queue-see-more');
     }
 }
+
+
+// last call status------>
+                // 1- answered
+                // 2-call back
+                // 3- noAnswer
+                // 4- exeed 3 call times
+                // 5- not in use  (status=>-1)

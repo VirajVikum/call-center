@@ -94,7 +94,7 @@ class CallQueue extends Component
                 $campaign = ad_campaign::where('campaign_id', $this->selectedCampaignId)
                     ->where(function ($query) {
                         $query->where('status', '0') // not in a queue 
-                            ->orWhere('last_call_status', Null); // not completed  calls of that number
+                            ->orWhere('last_call_status', Null); // not completed  calls of that number(not completed all jobs)
                     })
                     ->whereIn('language', $this->selectedSkills)
                     ->first();
@@ -113,7 +113,7 @@ class CallQueue extends Component
                 // last call status------>
                 // 1- answered
                 // 2-call back
-                // 3-
+                // 3- noAnswer
                 // 4-
 
 

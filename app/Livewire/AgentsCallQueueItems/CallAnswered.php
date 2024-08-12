@@ -36,6 +36,10 @@ class CallAnswered extends Component
     public $minutes  ;
     public $ampm = 'AM' ;
 
+    public $isNoAnswer =false;
+    public $callCount;
+
+
     #[On('open-answered')]
     public function answered($phone, $campaignId,$rowId)
     {
@@ -47,6 +51,7 @@ class CallAnswered extends Component
         // Log::info('Received campaignId: ' . $campaignId);
         $this->updateReasons();
         // dd($rowId);
+        Log::info('Sent data to component', ['time' => now()]);
     }
 
 
@@ -57,32 +62,55 @@ class CallAnswered extends Component
         // Log::info('Received campaignId: ' . $campaignId);
         Cache::put('selected-campaignid', $this->campaignId, 60);
         $this->updateReasons();
+        Log::info('Called upadate reasons function', ['time' => now()]);
     }
 
     #[On('set-rating')]
     public function setRating($value)
     {
         $this->rating=$value;
-        if($this->rating==1)
-        {
-            $this->satisfactStatus="Poor";
+        // if($this->rating==1)
+        // {
+        //     $this->satisfactStatus="Poor";
+        // }
+        // elseif($this->rating==2)
+        // {
+        //     $this->satisfactStatus="Fair";
+        // }
+        // elseif($this->rating==3)
+        // {
+        //     $this->satisfactStatus="Average";
+        // }
+        // elseif($this->rating==4)
+        // {
+        //     $this->satisfactStatus="Good";
+        // }
+        // elseif($this->rating==5)
+        // {
+        //     $this->satisfactStatus="Excellent";
+        // }
+
+        switch ($this->rating) {
+            case 1:
+                $this->satisfactStatus = "Poor";
+                break;
+            case 2:
+                $this->satisfactStatus = "Fair";
+                break;
+            case 3:
+                $this->satisfactStatus = "Average";
+                break;
+            case 4:
+                $this->satisfactStatus = "Good";
+                break;
+            case 5:
+                $this->satisfactStatus = "Excellent";
+                break;
+            default:
+                $this->satisfactStatus = "Unknown";
+                break;
         }
-        elseif($this->rating==2)
-        {
-            $this->satisfactStatus="Fair";
-        }
-        elseif($this->rating==3)
-        {
-            $this->satisfactStatus="Average";
-        }
-        elseif($this->rating==4)
-        {
-            $this->satisfactStatus="Good";
-        }
-        elseif($this->rating==5)
-        {
-            $this->satisfactStatus="Excellent";
-        }
+        Log::info('Set rating description according to the rate', ['time' => now()]);
         
     }
 
@@ -99,6 +127,8 @@ class CallAnswered extends Component
 
     public function updateReasons()
     {
+        Log::info('Started reasons fetching', ['time' => now()]);
+
         if ($this->campaignId) {
             $this->satisfactReasons = call_satisfaction_reason::where('campaign_id', $this->campaignId)
                 ->pluck('reasons') // column name
@@ -117,6 +147,8 @@ class CallAnswered extends Component
             $this->disSatisfactReasons = [];
         }
 
+        Log::info('End reasons fetching', ['time' => now()]);
+
     }
 
     public function close()
@@ -134,12 +166,15 @@ class CallAnswered extends Component
 
     public function updateCampaign()
     {
+        Log::info('Started to updated DB', ['time' => now()]);
+
         $time = new DateTime();
         // $formattedTime = $time->format('Y-m-d H:i:s');
         $updateRow = ad_campaign::find($this->rowId);
         $updateRow->update(['last_call_status'=>'1','status'=>'1','agent_id'=>auth()->id(),'call_attempt'=>$this->callAttempt,'satisfaction_level'=>$this->rating,'satisfaction_status'=>$this->satisfactStatus,'satisfaction_reasons'=>$this->selectedSatisfactReasons,'dissatisfaction_reasons'=>$this->selectedDisSatisfactReasons,'completed_date'=>$time,'remarks'=>$this->remarks]);
 
         // dd($updateRow);
+        $this->dispatch('completed-job',$this->rowId);
 
         // $this->rowId = null;
     // $this->callAttempt = null;
@@ -150,15 +185,17 @@ class CallAnswered extends Component
     $this->remarks = null;
 
         $this->isOpen=false;
+
+        Log::info('Updated DB', ['time' => now()]);
     }
 
 
 
     #[On('open-callback')]
-    public function callback($phone, $campaignId,$rowId)
+    public function callback($phone, $campaignId)
     {
         // dd($rowId);
-        $this->rowId=$rowId;
+        // $this->rowId=$rowId;
         $this->phone=$phone;
         $this->campaignId=$campaignId;
         $this->isOpen=true;
@@ -194,10 +231,72 @@ class CallAnswered extends Component
     
     }
 
+    #[On('open-noAnswer')]
+    public function noAnswer($phone, $campaignId)
+    {
+        $this->phone=$phone;
+        $this->campaignId=$campaignId;
+        $this->isOpen=true;
+        $row =ad_campaign::where('contact_1', $this->phone)->first();
+        $this->callCount = $row['call_attempt']!=Null?$row['call_attempt']:0;
+        $this->isNoAnswer =true;
+
+        $this->setCallcount();
+
+    }
+
+    public function setCallcount()
+    {
+        $today = new DateTime();
+        if($this->callCount=0)
+        {
+            $nextCall = $today->modify('+3 hours')->format('Y-m-d H:i:s');
+        }
+        elseif($this->callCount=1)
+        {
+            $nextCall = $today->modify('+3 day')->format('Y-m-d');
+        }
+        else
+        {
+            $nextCall = Null;
+        }
+
+        if($this->callCount <3)
+        {
+            ad_campaign::where('contact_1', $this->phone)
+            ->update([
+                'last_call_status' => '2', // should call again
+                'call_attempt' => $this->callCount+1,
+                'next_available_at' => $nextCall,
+                'agent_id' => auth()->id()
+            ]);
+        }
+        else{
+            ad_campaign::where('contact_1', $this->phone)
+            ->update([
+                'last_call_status' => '4',  // won't call again
+                'call_attempt' => $this->callCount+1,
+                'agent_id' => auth()->id()
+            ]);
+        }
+        $this->isNoAnswer =false;
+        $this->isOpen=false;
+        
+    }
+
 
     public function render()
     {
         // Log::info('Rendering CallAnswered with campaignId: ' . json_encode($this->campaignId));
+        Log::info('Show answered blade', ['time' => now()]);
         return view('livewire.agents-call-queue-items.call-answered');
     }
 }
+
+
+// last call status------>
+                // 1- answered
+                // 2-call back
+                // 3- noAnswer (set as 2 to use same function of callback)
+                // 4- exeed 3 call times
+                // 5- not in use  (status=>-1)
