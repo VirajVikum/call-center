@@ -14,4 +14,16 @@ class ac_company extends Model
         'type',
         'del_status'
         ];
+
+         // Define relationship with call_satisfaction_reason
+    public function satisfactionReasons()
+    {
+        return $this->hasMany(call_satisfaction_reason::class, 'campaign_id');
+    }
+
+    // Define relationship with call_dissatisfaction_reason
+    public function dissatisfactionReasons()
+    {
+        return $this->hasMany(call_dissatisfaction_reason::class, 'campaign_id');
+    }
 }
