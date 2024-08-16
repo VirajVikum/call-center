@@ -22,8 +22,8 @@ class CallData extends Model
             'score'         
     ];
 
-    public function userType()
-    {
-        return $this->belongsTo(ac_user_types::class, 'user_type_id');
-    }
+    // public function userType()
+    // {
+    //     return $this->belongsTo(ac_user_types::class, 'user_type_id');
+    // }
 }

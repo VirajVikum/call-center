@@ -1,0 +1,1 @@
+"id"	"uniqueid"	"callcount"	"direction"	"status"	"ani"	"dnis"	"date"

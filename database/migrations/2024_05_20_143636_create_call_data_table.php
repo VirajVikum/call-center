@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('call_data', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_type_id')->constrained('ac_user_types')->onDelete('cascade');
+            // $table->foreignId('user_type_id')->constrained('ac_user_types')->onDelete('cascade');
             $table->string('language');
             $table->string('center');
             $table->string('call_status');

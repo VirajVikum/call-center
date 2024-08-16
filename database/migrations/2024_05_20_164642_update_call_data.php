@@ -17,7 +17,7 @@ return new class extends Migration
                 // Drop the existing foreign key if it exists
                 
                 // Drop the column
-                $table->dropColumn('user_type_id');
+                // $table->dropColumn('user_type_id');
             }
             
             

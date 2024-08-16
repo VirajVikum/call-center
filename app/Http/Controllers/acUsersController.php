@@ -69,9 +69,16 @@ class acUsersController extends Controller
                 'user_type_id'=>'required|integer'
             ]
             );
+            
 
         // dd($company);
         $user->update($data);
+
+        if ($data['user_type_id'] == 1) {
+            $user->syncRoles(['admin']);
+        } else {
+            $user->syncRoles(['agent']);
+        }
 
         return redirect(route('users'))->with('success','Product created successfully');
 

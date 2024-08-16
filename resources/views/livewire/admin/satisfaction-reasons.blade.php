@@ -27,8 +27,8 @@
                                         placeholder="Search in ID, name, Email..." required />
                                 </div>
                             </form>
-                            <div class="mt-2 ml-auto pt-4 pr-2">
-                                <button class="border border-gray rounded-md p-1 ml-2"
+                            <div class="mt-2 ml-auto pt-4">
+                                <button class="border border-gray rounded-md p-1 ml-2 "
                                     wire:click='openedNew'>New</button>
                                 <button class="border border-green text-green rounded-md p-1">
                                     <div class="flex">
